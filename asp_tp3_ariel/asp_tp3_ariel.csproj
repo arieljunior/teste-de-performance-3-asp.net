@@ -189,6 +189,7 @@
     <Content Include="Views\Pessoa\Details.cshtml" />
     <Content Include="Views\Pessoa\Edit.cshtml" />
     <Content Include="Views\Pessoa\Delete.cshtml" />
+    <Content Include="Views\Pessoa\BuscarPessoa.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

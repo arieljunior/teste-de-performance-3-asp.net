@@ -10,12 +10,12 @@ namespace asp_tp3_ariel.FakeDB
     {
         private static List<PessoaModel> ListaPessoas = new List<PessoaModel>();
 
-        public void adicionarPessoa(PessoaModel p) //Método que recebe uma pessoa
+        public void adicionarPessoa(PessoaModel p)
         {
-            PessoaModel pessoa = new PessoaModel() // Instâncio uma nova pessoa
+            PessoaModel pessoa = new PessoaModel()
             {
-                Id = ListaPessoas.Count() + 1, //Obtenho o tamano da lista (.Count()) que retorna um Int e adiciono mais 1 para o id nunca ser repetido
-                Nome = p.Nome,                 //Complemento essa instância com a pessoa que recebi através do método
+                Id = ListaPessoas.Count() + 1, 
+                Nome = p.Nome,                 
                 Sobrenome = p.Sobrenome,
                 DataNascimento = p.DataNascimento
             };
@@ -23,50 +23,53 @@ namespace asp_tp3_ariel.FakeDB
             ListaPessoas.Add(pessoa);
         }
 
-        public List<PessoaModel> getListaPessoas() //Metodo que retorna a lista
+        public List<PessoaModel> getListaPessoas()
         {
             return ListaPessoas;
         }
 
-        public PessoaModel BuscarPessoa(int id) //Metodo retorna uma pessoa
+        public PessoaModel BuscarPessoa(int id) 
         {
             PessoaModel pessoa = new PessoaModel();
 
-            foreach (var p in ListaPessoas) //Varrendo a lista
+            foreach (var p in ListaPessoas) 
             {
-                if (p.Id == id) // Verifico se o id da lista é igual ao id do parâmetro do método, caso seja, é a pessoa que estava procurando
+                if (p.Id == id) 
                 {
-                    pessoa.Id = p.Id; //incremento a pessoa que instânciei em cima com a pessoa que encontrei na lista
+                    pessoa.Id = p.Id;
                     pessoa.Nome = p.Nome;
                     pessoa.Sobrenome = p.Sobrenome;
                     pessoa.DataNascimento = p.DataNascimento;
                 }
             }
 
-            return pessoa; //Retorno a pessoa. 
-                           //Caso a pessoa não seja encontrada no foreach, esta pessoa estará vazia
+            return pessoa;
         }
 
         public void AtualizarPessoa(PessoaModel pessoa)
         {
             foreach(var p in ListaPessoas)
             {
-                if (p.Id == pessoa.Id) //Caso o id encontrado na lista seja igual o id da pessoa recebido como parâmetro
+                if (p.Id == pessoa.Id) 
                 {
-                    p.Nome = pessoa.Nome; //Atualizo os dados na lista com os dados que foram passados nesse método
+                    p.Nome = pessoa.Nome;
                     p.Sobrenome = pessoa.Sobrenome;
                     p.DataNascimento = pessoa.DataNascimento;
-                    break; //Paro o foreach. não há necessitade de continuar varrendo se já encontramos e atualizamos a pessoa
+                    break; 
                 }
             }
         }
 
         public void RemoverPessoa(PessoaModel pessoa)
         {
-            int posicaoEncontrada = ListaPessoas.FindIndex(x => x.Id == pessoa.Id); //Pego a posição (index) na lista onde os id's são iguais
-            ListaPessoas.Remove(ListaPessoas[posicaoEncontrada]); //Removo passando a posição encontrada
+            int posicaoEncontrada = ListaPessoas.FindIndex(x => x.Id == pessoa.Id);
+            ListaPessoas.Remove(ListaPessoas[posicaoEncontrada]);
         }
 
-
+        public List<PessoaModel> BuscarNome(string nome)
+        {
+            List<PessoaModel> PessoasEncontradas = ListaPessoas.FindAll(x => x.Nome.ToLower().Contains(nome.ToLower()));
+            return PessoasEncontradas;
+        }
     }
 }
