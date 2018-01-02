@@ -149,8 +149,13 @@
     </Compile>
     <Compile Include="Models\PessoaModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\PessoaRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Pessoa_db.mdf" />
+    <Content Include="App_Data\Pessoa_db_log.ldf">
+      <DependentUpon>Pessoa_db.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -191,9 +196,7 @@
     <Content Include="Views\Pessoa\Delete.cshtml" />
     <Content Include="Views\Pessoa\BuscarPessoa.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>

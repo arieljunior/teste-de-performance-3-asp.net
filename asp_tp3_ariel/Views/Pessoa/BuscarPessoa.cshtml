@@ -1,0 +1,58 @@
+﻿@model IEnumerable<asp_tp3_ariel.Models.PessoaModel>
+
+@{
+    ViewBag.Title = "BuscarPessoa";
+}
+
+<h2>BuscarPessoa</h2>
+
+    @using (Html.BeginForm())
+    {
+    <div class="form-group" style="margin-bottom:10px;">
+
+        <div class="col-md-10">
+            <input type="text" name="nome" id="nome" style="display:inline;" class="form-control" placeholder="Digite um nome" />
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </div>
+    </div>
+    }
+
+<hr />
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sobrenome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataNascimento)
+        </th>
+        <th></th>
+    </tr>
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sobrenome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataNascimento)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Detalhes", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Deletar", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    }
+
+</table>

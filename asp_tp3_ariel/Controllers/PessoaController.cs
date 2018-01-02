@@ -1,5 +1,6 @@
 ﻿using asp_tp3_ariel.FakeDB;
 using asp_tp3_ariel.Models;
+using asp_tp3_ariel.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,9 @@ namespace asp_tp3_ariel.Controllers
 
         public ActionResult Index()
         {
-            return View(database.getListaPessoas());
+            PessoaRepository repository = new PessoaRepository();
+
+            return View(repository.GetAllPessoas());
         }
         
         public ActionResult Details(int id)
