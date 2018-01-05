@@ -15,9 +15,7 @@ namespace asp_tp3_ariel.Controllers
 
         public ActionResult Index()
         {
-            PessoaRepository repository = new PessoaRepository();
-
-            return View(repository.GetAllPessoas());
+            return View(database.getListaPessoas());
         }
         
         public ActionResult Details(int id)
